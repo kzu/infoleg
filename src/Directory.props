@@ -1,0 +1,12 @@
+<Project>
+
+  <PropertyGroup>
+    <RootNamespace>Infoleg</RootNamespace>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <ImplicitUsings>true</ImplicitUsings>
+    <LangVersion>Preview</LangVersion>
+    <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
+    <NoWarn>CS0436;$(NoWarn)</NoWarn>
+  </PropertyGroup>
+  
+</Project>
