@@ -7,6 +7,8 @@
     <LangVersion>Preview</LangVersion>
     <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
     <NoWarn>CS0436;$(NoWarn)</NoWarn>
+    <!-- Clear suffix to get clean 42.42.* versions from main for easier install/update -->
+    <VersionSuffix Condition="$(VersionSuffix) == 'main'"></VersionSuffix>
   </PropertyGroup>
   
 </Project>
