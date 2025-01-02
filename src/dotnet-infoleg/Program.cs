@@ -67,7 +67,11 @@ static async Task<string[]> CheckUpdates(string[] args)
         return [];
 
     var providers = Repository.Provider.GetCoreV3();
-    var repository = new SourceRepository(new PackageSource("https://api.nuget.org/v3/index.json"), providers);
+    var repository = new SourceRepository(new PackageSource(
+        // use CI feed rather than production feed depending on which version we're using
+        ThisAssembly.Project.VersionPrefix.StartsWith("42.42.") ?
+        "https://kzu.blob.core.windows.net/nuget/index.json" :
+        "https://api.nuget.org/v3/index.json"), providers);
     var resource = await repository.GetResourceAsync<PackageMetadataResource>();
     var localVersion = new NuGetVersion(ThisAssembly.Project.Version);
     var metadata = await resource.GetMetadataAsync(ThisAssembly.Project.PackageId, true, false,
