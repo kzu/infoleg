@@ -66,10 +66,12 @@ static async Task<string[]> CheckUpdates(string[] args)
     if (args.Contains("-u") && !args.Contains("--unattended"))
         return [];
 
+    var civersion = ThisAssembly.Project.VersionPrefix.StartsWith("42.42.");
+
     var providers = Repository.Provider.GetCoreV3();
     var repository = new SourceRepository(new PackageSource(
         // use CI feed rather than production feed depending on which version we're using
-        ThisAssembly.Project.VersionPrefix.StartsWith("42.42.") ?
+        civersion ?
         "https://kzu.blob.core.windows.net/nuget/index.json" :
         "https://api.nuget.org/v3/index.json"), providers);
     var resource = await repository.GetResourceAsync<PackageMetadataResource>();
@@ -93,7 +95,8 @@ static async Task<string[]> CheckUpdates(string[] args)
     {
         return [
             $"Hay una nueva version de [yellow]{ThisAssembly.Project.PackageId}[/]: [dim]v{localVersion.ToNormalizedString()}[/] -> [lime]v{update.ToNormalizedString()}[/]",
-            $"Actualizar con: [yellow]dotnet[/] tool update -g {ThisAssembly.Project.PackageId}"
+            $"Actualizar con: [yellow]dotnet[/] tool update -g {ThisAssembly.Project.PackageId}" + 
+            (civersion ? " --source https://kzu.blob.core.windows.net/nuget/index.json" : ""),
         ];
     }
 
