@@ -9,6 +9,8 @@
     <NoWarn>CS0436;$(NoWarn)</NoWarn>
     <!-- Clear suffix to get clean 42.42.* versions from main for easier install/update -->
     <VersionSuffix Condition="$(VersionSuffix) == 'main'"></VersionSuffix>
+    <!-- CI variable with feed URL -->
+    <SLEET_FEED_URL Condition="$(SLEET_FEED_URL) == ''">https://clarius.blob.core.windows.net/nuget/index.json</SLEET_FEED_URL>
   </PropertyGroup>
   
 </Project>
