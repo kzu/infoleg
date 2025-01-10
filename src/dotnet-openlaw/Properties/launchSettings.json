@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "dotnet-openlaw": {
+      "commandName": "Project",
+      "commandLineArgs": "saij bajar"
+    }
+  }
+}

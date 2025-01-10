@@ -1,7 +1,7 @@
 <Project>
 
   <PropertyGroup>
-    <RootNamespace>Infoleg</RootNamespace>
+    <RootNamespace>Clarius.OpenLaw</RootNamespace>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
     <ImplicitUsings>true</ImplicitUsings>
     <LangVersion>Preview</LangVersion>
