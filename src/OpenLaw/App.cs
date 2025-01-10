@@ -51,7 +51,7 @@ public static class App
             // configure commands
             config.AddBranch("saij", saij =>
             {
-                saij.AddCommand<DownloadCommand>("bajar");
+                saij.AddCommand<DownloadCommand>("download");
             });
 
             if (Environment.GetEnvironmentVariables().Contains("NO_COLOR"))

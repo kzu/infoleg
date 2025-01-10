@@ -3,18 +3,10 @@ using Spectre.Console.Cli;
 
 namespace Clarius.OpenLaw;
 
-public class DownloadCommand : Command<DownloadSettings>
+public class DownloadCommand(IAnsiConsole console) : AsyncCommand<DownloadSettings>
 {
-    readonly IAnsiConsole console;
-
-    public DownloadCommand(IAnsiConsole console)
+    public override Task<int> ExecuteAsync(CommandContext context, DownloadSettings settings)
     {
-        this.console = console;
-    }
-
-    public override int Execute(CommandContext context, DownloadSettings settings)
-    {
-        console.WriteLine(settings.All ? "Downloading all items." : "Downloading specific item.");
-        return 0;
+        return Task.FromResult(0);
     }
 }
