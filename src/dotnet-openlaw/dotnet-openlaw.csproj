@@ -3,8 +3,8 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net9.0</TargetFramework>
-    <PackageId>dotnet-infoleg</PackageId>
-    <ToolCommandName>infoleg</ToolCommandName>
+    <PackageId>dotnet-openlaw</PackageId>
+    <ToolCommandName>openlaw</ToolCommandName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,15 +16,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Infoleg\Infoleg.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectProperty Include="ToolCommandName" />
     <ProjectProperty Include="BuildDate" />
     <ProjectProperty Include="BuildRef" />
     <ProjectProperty Include="PackageId" />
     <ProjectProperty Include="PackageVersion" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OpenLaw\OpenLaw.csproj" />
   </ItemGroup>
 
   <Target Name="RenderHelp" AfterTargets="Build" Condition="$(DesignTimeBuild) != 'true' and '$(OS)' == 'Windows_NT'">

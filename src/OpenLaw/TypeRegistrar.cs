@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Spectre.Console.Cli;
 
-namespace Infoleg;
+namespace Clarius.OpenLaw;
 
 public sealed class TypeRegistrar(IServiceCollection? builder = default) : ITypeRegistrar
 {

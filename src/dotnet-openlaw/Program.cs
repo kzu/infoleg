@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
-using Infoleg;
+using Clarius.OpenLaw;
 using NuGet.Configuration;
 using NuGet.Protocol.Core.Types;
 using NuGet.Versioning;
@@ -95,7 +95,7 @@ static async Task<string[]> CheckUpdates(string[] args)
     {
         return [
             $"Hay una nueva version de [yellow]{ThisAssembly.Project.PackageId}[/]: [dim]v{localVersion.ToNormalizedString()}[/] -> [lime]v{update.ToNormalizedString()}[/]",
-            $"Actualizar con: [yellow]dotnet[/] tool update -g {ThisAssembly.Project.PackageId}" + 
+            $"Actualizar con: [yellow]dotnet[/] tool update -g {ThisAssembly.Project.PackageId}" +
             (civersion ? " --source https://kzu.blob.core.windows.net/nuget/index.json" : ""),
         ];
     }
