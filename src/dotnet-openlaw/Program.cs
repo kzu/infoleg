@@ -71,7 +71,7 @@ static async Task<string[]> CheckUpdates(string[] args)
     var repository = new SourceRepository(new PackageSource(
         // use CI feed rather than production feed depending on which version we're using
         civersion ?
-        "https://kzu.blob.core.windows.net/nuget/index.json" :
+        ThisAssembly.Project.SLEET_FEED_URL :
         "https://api.nuget.org/v3/index.json"), providers);
     var resource = await repository.GetResourceAsync<PackageMetadataResource>();
     var localVersion = new NuGetVersion(ThisAssembly.Project.Version);

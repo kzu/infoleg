@@ -21,6 +21,7 @@
     <ProjectProperty Include="BuildRef" />
     <ProjectProperty Include="PackageId" />
     <ProjectProperty Include="PackageVersion" />
+    <ProjectProperty Include="SLEET_FEED_URL" />
   </ItemGroup>
 
   <ItemGroup>
