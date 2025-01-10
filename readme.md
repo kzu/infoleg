@@ -1,9 +1,10 @@
-# Scraper de InfoLEG
+![Icon](assets/img/icon.png) OpenLaw
+============
 
-Este scraper descarga los documentos de la base de datos de InfoLEG.
+Plataforma de código abierto para normas de Argentina.
 
 ## Instalación
 
 ```
-dotnet tool install -g dotnet-infoleg --source https://kzu.blob.core.windows.net/nuget/index.json
+dotnet tool install -g dotnet-openlaw --source https://clarius.blob.core.windows.net/nuget/index.json
 ```
