@@ -7,12 +7,18 @@
   <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="6.0.4" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="SharpYaml" Version="2.1.1" />
     <PackageReference Include="xunit" Version="2.9.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="3.0.1" />
+    <PackageReference Include="YamlDotNet" Version="16.3.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\OpenLaw\OpenLaw.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="@(None)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
