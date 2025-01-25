@@ -96,7 +96,7 @@ static async Task<string[]> CheckUpdates(string[] args)
         return [
             $"Hay una nueva version de [yellow]{ThisAssembly.Project.PackageId}[/]: [dim]v{localVersion.ToNormalizedString()}[/] -> [lime]v{update.ToNormalizedString()}[/]",
             $"Actualizar con: [yellow]dotnet[/] tool update -g {ThisAssembly.Project.PackageId}" +
-            (civersion ? " --source https://kzu.blob.core.windows.net/nuget/index.json" : ""),
+            (civersion ? " --source " + ThisAssembly.Project.SLEET_FEED_URL : ""),
         ];
     }
 
