@@ -75,7 +75,8 @@ static async Task<string[]> CheckUpdates(string[] args)
         "https://api.nuget.org/v3/index.json"), providers);
     var resource = await repository.GetResourceAsync<PackageMetadataResource>();
     var localVersion = new NuGetVersion(ThisAssembly.Project.Version);
-    var metadata = await resource.GetMetadataAsync(ThisAssembly.Project.PackageId, true, false,
+    // Only update to stable versions, not pre-releases
+    var metadata = await resource.GetMetadataAsync(ThisAssembly.Project.PackageId, includePrerelease: false, false,
         new SourceCacheContext
         {
             NoCache = true,
