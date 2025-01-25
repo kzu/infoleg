@@ -2,7 +2,9 @@
 
 namespace Clarius.OpenLaw.Saij;
 
-record SearchResult(string Id, string Abstract);
+record SearchResults(int Total, int Skip, int Take, DocResult[] Docs);
+
+record DocResult(string Id, string Abstract);
 
 public record DocumentAbstract(string Id, string Canonical, string Name, string Title, string Summary, string Type, string Kind,
     string Mecano, string Status, string Date,

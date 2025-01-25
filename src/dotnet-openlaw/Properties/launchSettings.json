@@ -2,7 +2,7 @@
   "profiles": {
     "dotnet-openlaw": {
       "commandName": "Project",
-      "commandLineArgs": "saij bajar"
+      "commandLineArgs": "saij download --dir F:\\SAIJ"
     }
   }
 }

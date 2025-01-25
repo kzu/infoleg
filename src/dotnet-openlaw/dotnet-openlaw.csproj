@@ -25,14 +25,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <CommandHelp Include="saij download" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\OpenLaw\OpenLaw.csproj" />
   </ItemGroup>
 
   <Target Name="RenderHelp" AfterTargets="Build" Condition="$(DesignTimeBuild) != 'true' and '$(OS)' == 'Windows_NT'">
     <PropertyGroup>
       <Cli>$(TargetDir)$(TargetName).exe</Cli>
-      <HelpCommand>"$(Cli)" --help --tos --unattended</HelpCommand>
-      <SyncCommand>"$(Cli)" sync --help --unattended</SyncCommand>
+      <HelpCommand>"$(Cli)" --help</HelpCommand>
     </PropertyGroup>
 
     <WriteLinesToFile Lines="```shell" Overwrite="true" Encoding="UTF-8" File="help.md" />
@@ -45,6 +48,26 @@
     <Error Text="Failed to get help output." Condition="'$(MSBuildLastExitCode)' != '0'" />
 
     <WriteLinesToFile Lines="```" Overwrite="false" Encoding="UTF-8" File="help.md" />
+  </Target>
+
+  <Target Name="RenderCommandHelp" AfterTargets="Build" Inputs="@(CommandHelp)" Outputs="|%(CommandHelp.Identity)|" Condition="$(DesignTimeBuild) != 'true' and '$(OS)' == 'Windows_NT'">
+    <PropertyGroup>
+      <CommandHelp>%(CommandHelp.Identity)</CommandHelp>
+      <Cli>$(TargetDir)$(TargetName).exe</Cli>
+      <HelpCommand>"$(Cli)" $(CommandHelp) --help</HelpCommand>
+      <HelpFile>$(CommandHelp.Replace(' ', '-')).md</HelpFile>
+    </PropertyGroup>
+
+    <WriteLinesToFile Lines="```shell" Overwrite="true" Encoding="UTF-8" File="$(HelpFile)" />
+
+    <Exec Command="$(HelpCommand) &gt;&gt; $(HelpFile)" StdOutEncoding="UTF-8" EnvironmentVariables="NO_COLOR=true" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="MSBuildLastExitCode" />
+    </Exec>
+    <!-- Run again if it failed, but without the output redirect, for troubleshooting via build logs -->
+    <Exec Condition="$(MSBuildLastExitCode) != '0'" Command="$(HelpCommand)" StdOutEncoding="UTF-8" EnvironmentVariables="NO_COLOR=true" />
+    <Error Text="Failed to get help output." Condition="'$(MSBuildLastExitCode)' != '0'" />
+
+    <WriteLinesToFile Lines="```" Overwrite="false" Encoding="UTF-8" File="$(HelpFile)" />
   </Target>
 
 </Project>

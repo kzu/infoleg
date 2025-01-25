@@ -4,6 +4,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Http.Resilience;
 using Spectre.Console;
 using Spectre.Console.Cli;
 using static Spectre.Console.AnsiConsole;
@@ -16,12 +17,21 @@ public static class App
     {
         var collection = new ServiceCollection();
 
-        collection.AddHttpClient().ConfigureHttpClientDefaults(defaults => defaults.ConfigureHttpClient(http =>
-        {
-            http.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue(ThisAssembly.Info.Product, ThisAssembly.Info.InformationalVersion));
-            if (Debugger.IsAttached)
-                http.Timeout = TimeSpan.FromMinutes(10);
-        }));
+        collection.AddHttpClient()
+            .ConfigureHttpClientDefaults(defaults => defaults.ConfigureHttpClient(http =>
+                {
+                    http.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue(ThisAssembly.Info.Product, ThisAssembly.Info.InformationalVersion));
+                    if (Debugger.IsAttached)
+                        http.Timeout = TimeSpan.FromMinutes(10);
+                }).AddStandardResilienceHandler());
+
+        collection.AddHttpClient("saij")
+            .AddStandardResilienceHandler(config => config.Retry.ShouldHandle = args => new ValueTask<bool>(
+                // We'll get a 403 if we hit the rate limit, so we'll consider that transient.
+                (args.Outcome.Result?.StatusCode == System.Net.HttpStatusCode.Forbidden ||
+                HttpClientResiliencePredicates.IsTransient(args.Outcome)) &&
+                // We'll get a 500 error when enumerating past the available items too :/
+                args.Outcome.Result?.StatusCode != System.Net.HttpStatusCode.InternalServerError));
 
         var needsNewLine = false;
         collection.AddSingleton<IProgress<string>>(new Progress<string>(message =>
