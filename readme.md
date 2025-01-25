@@ -1,9 +1,9 @@
 ![Icon](assets/img/icon.png) OpenLaw
 ============
 
-Plataforma de código abierto para normas de Argentina.
+Plataforma de cÃ³digo abierto para normas de Argentina.
 
-## Instalación
+## InstalaciÃ³n
 
 ```
 dotnet tool install -g dotnet-openlaw --source https://clarius.blob.core.windows.net/nuget/index.json
