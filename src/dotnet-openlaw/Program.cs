@@ -52,7 +52,7 @@ if (args.Contains("--version"))
 var updates = Task.Run(() => CheckUpdates(args));
 var exit = app.Run(args);
 
-if (await updates is { Length: > 0 } messages)
+if (!args.Contains("--no-updates") && await updates is { Length: > 0 } messages)
 {
     foreach (var message in messages)
         AnsiConsole.MarkupLine(message);

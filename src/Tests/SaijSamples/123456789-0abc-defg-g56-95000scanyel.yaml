@@ -172,11 +172,11 @@ document:
       texto: |-
         ARTICULO 3° - Deróganse las siguientes normas:
 
-        a) Las [[r uuid:DA001]]leyes Nros. 11.357[[/r uuid:DA001]], [[r uuid:DA002]]13.512,[[/r uuid:DA002]] [[r uuid:DA003]]14.394[[/r uuid:DA003]], [[r uuid:DA004]]18.248[[/r uuid:DA004]], [[r uuid:DA005]]19.724[[/r uuid:DA005]], [[r uuid:DA006]]19.836,[[/r uuid:DA006]] [[r uuid:DA007]]20.276[[/r uuid:DA007]], [[r uuid:DA022]]21.342[[/r uuid:DA022]] -con [[r uuid:DA023]]excepción de su artículo 6[[/r uuid:DA023]]°-, [[r uuid:DA008]]23.091[[/r uuid:DA008]], [[r uuid:DA009]]25.509 [[/r uuid:DA009]]y [[r uuid:DA010]]26.005;[[/r uuid:DA010]] b) [[r uuid:DA011]]La Sección IX del Capítulo II -artículos 361 a 366[[/r uuid:DA011]]- y el [[r uuid:DA012]]Capítulo III de la ley 19.550, t.o. 1984;[[/r uuid:DA012]] c) Los [[r uuid:DA013]]artículos 36, 37 y 38 de la ley 20.266[[/r uuid:DA013]] y sus modificatorias;
+        a) Las leyes Nros. 11.357, 13.512, 14.394, 18.248, 19.724, 19.836, 20.276, 21.342 -con excepción de su artículo 6°-, 23.091, 25.509 y 26.005; b) La Sección IX del Capítulo II -artículos 361 a 366- y el Capítulo III de la ley 19.550, t.o. 1984; c) Los artículos 36, 37 y 38 de la ley 20.266 y sus modificatorias;
 
-        d) El[[r uuid:DA014]] artículo 37 del decreto 1798 del 13 de octubre de 1994;[[/r uuid:DA014]] e) Los [[r uuid:DA015]]artículos 1° a 26 de la ley 24.441[[/r uuid:DA015]];
+        d) El artículo 37 del decreto 1798 del 13 de octubre de 1994; e) Los artículos 1° a 26 de la ley 24.441;
 
-        f) Los [[r uuid:DA020]]Capítulos I -con excepción del segundo y tercer párrafos del artículo 11-[[/r uuid:DA020]] y [[r uuid:DA021]]III -con excepción de los párrafos segundo y tercero del artículo 28- de la ley 25.248; [[/r uuid:DA021]] g) Los [[r uuid:DA016]]Capítulos III[[/r uuid:DA016]], [[r uuid:DA017]]IV[[/r uuid:DA017]], [[r uuid:DA018]]V y[[/r uuid:DA018]] [[r uuid:DA019]]IX de la ley 26.356.[[/r uuid:DA019]]
+        f) Los Capítulos I -con excepción del segundo y tercer párrafos del artículo 11- y III -con excepción de los párrafos segundo y tercero del artículo 28- de la ley 25.248;  g) Los Capítulos III, IV, V y IX de la ley 26.356.
       deroga-a:
         referencia-normativa:
         - id: DEROGA_A_0
@@ -234,7 +234,7 @@ document:
           id: MODIFICA_A_0
           ref: LEY C 020094 1973 01 15 0631 000 0678 000
       numero-articulo: 4
-      texto: ARTICULO 4° - Deróganse el [[r uuid:DA001]]Código Civil[[/r uuid:DA001]], aprobado por la ley 340, y el Código de Comercio, aprobado por las [[r uuid:DA003]]leyes Nros. 15[[/r uuid:DA003]] y [[r uuid:OA001]]2.637, excepto los artículos 891, 892, 907, 919, 926, 984 a 996, 999 a 1003 y 1006 a 1017/5,[[/r uuid:OA001]] que se incorporan como artículos [[r uuid:MA001]]631 a 678 de la ley 20.094,[[/r uuid:MA001]] facultándose al Poder Ejecutivo nacional a renumerar los artículos de la citada ley en virtud de la incorporación de las normas precedentes.
+      texto: ARTICULO 4° - Deróganse el Código Civil, aprobado por la ley 340, y el Código de Comercio, aprobado por las leyes Nros. 15 y 2.637, excepto los artículos 891, 892, 907, 919, 926, 984 a 996, 999 a 1003 y 1006 a 1017/5, que se incorporan como artículos 631 a 678 de la ley 20.094, facultándose al Poder Ejecutivo nacional a renumerar los artículos de la citada ley en virtud de la incorporación de las normas precedentes.
       deroga-a:
         referencia-normativa:
         - id: DEROGA_A_0
@@ -248,7 +248,7 @@ document:
         - id: REFERENCIAS_NORMATIVAS_1
           ref: CCO C 002637 1889 10 05 0000 000 0000 000
       numero-articulo: 5
-      texto: ARTICULO 5° - Las leyes que actualmente integran, complementan o se encuentran incorporadas al [[r uuid:CT001]]Código Civil [[/r uuid:CT001]]o al [[r uuid:CT002]]Código de Comercio[[/r uuid:CT002]], excepto lo establecido en el artículo 3° de la presente ley, mantienen su vigencia como leyes que complementan al Código Civil y Comercial de la Nación aprobado por el artículo 1° de la presente.
+      texto: ARTICULO 5° - Las leyes que actualmente integran, complementan o se encuentran incorporadas al Código Civil o al Código de Comercio, excepto lo establecido en el artículo 3° de la presente ley, mantienen su vigencia como leyes que complementan al Código Civil y Comercial de la Nación aprobado por el artículo 1° de la presente.
     - referencias-normativas:
         referencia-normativa:
         - id: REFERENCIAS_NORMATIVAS_0
@@ -256,7 +256,7 @@ document:
         - id: REFERENCIAS_NORMATIVAS_1
           ref: CCO C 002637 1889 10 05 0000 000 0000 000
       numero-articulo: 6
-      texto: ARTICULO 6° - Toda referencia al [[r uuid:CT001]]Código Civil[[/r uuid:CT001]] o al [[r uuid:CT002]]Código de Comercio [[/r uuid:CT002]]contenida en la legislación vigente debe entenderse remitida al Código Civil y Comercial de la Nación que por la presente se aprueba.
+      texto: ARTICULO 6° - Toda referencia al Código Civil o al Código de Comercio contenida en la legislación vigente debe entenderse remitida al Código Civil y Comercial de la Nación que por la presente se aprueba.
     - numero-articulo: 7
       texto: ARTICULO 7° - La presente ley entrará en vigencia el 1° de agosto de 2015.
       modificado-por:
