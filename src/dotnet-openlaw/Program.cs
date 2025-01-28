@@ -52,7 +52,7 @@ if (args.Contains("--version"))
 var updates = Task.Run(() => CheckUpdates(args));
 var exit = app.Run(args);
 
-if (!args.Contains("--no-updates") && await updates is { Length: > 0 } messages)
+if (await updates is { Length: > 0 } messages)
 {
     foreach (var message in messages)
         AnsiConsole.MarkupLine(message);
@@ -64,6 +64,10 @@ static async Task<string[]> CheckUpdates(string[] args)
 {
     if (args.Contains("-u") && !args.Contains("--unattended"))
         return [];
+
+#if DEBUG
+    return [];
+#endif
 
     var civersion = ThisAssembly.Project.VersionPrefix.StartsWith("42.42.");
 
