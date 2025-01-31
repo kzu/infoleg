@@ -11,6 +11,8 @@
     <VersionSuffix Condition="$(VersionSuffix) == 'main'"></VersionSuffix>
     <!-- CI variable with feed URL -->
     <SLEET_FEED_URL Condition="$(SLEET_FEED_URL) == ''">https://clarius.blob.core.windows.net/nuget/index.json</SLEET_FEED_URL>
+
+    <UserSecretsId>bcfa6afd-d165-4505-b752-f00318604d0c</UserSecretsId>
   </PropertyGroup>
   
 </Project>

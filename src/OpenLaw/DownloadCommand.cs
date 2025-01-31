@@ -1,20 +1,25 @@
-﻿using System.IO;
+﻿using System.ComponentModel;
 using System.Text;
 using System.Text.Json;
 using CliWrap;
 using CliWrap.Buffered;
 using Devlooped;
-using Microsoft.Extensions.Options;
 using Spectre.Console;
 using Spectre.Console.Cli;
 
 namespace Clarius.OpenLaw;
 
+[Description("Descargar documentos del sistema SAIJ.")]
 public class DownloadCommand(IAnsiConsole console, IHttpClientFactory http) : AsyncCommand<DownloadSettings>
 {
-    static readonly JsonSerializerOptions options = new(JsonSerializerDefaults.Web)
+    static readonly JsonSerializerOptions readOptions = new()
     {
-        WriteIndented = true
+        Converters = { new JsonDictionaryConverter() },
+    };
+
+    static readonly JsonSerializerOptions writeOptions = new()
+    {
+        WriteIndented = true,
     };
 
     public override async Task<int> ExecuteAsync(CommandContext context, DownloadSettings settings)
@@ -49,16 +54,29 @@ public class DownloadCommand(IAnsiConsole console, IHttpClientFactory http) : As
                     var file = Path.Combine(settings.Directory, id + ".json");
                     // Skip if file exists and has the same timestamp
                     if (File.Exists(file) && await GetJsonTimestampAsync(file) == timestamp)
-                        continue;
+                    {
+                        // Source json file hasn't changed, so only convert if requested
+                        if (settings.Convert)
+                            // Don't force conversion if file already exists.
+                            ConvertFile(file, overwrite: false);
 
-                    File.WriteAllText(file, doc.ToJsonString(options));
+                        continue;
+                    }
+
+                    // Converting to dictionary performs string multiline formatting and markup removal
+                    var dictionary = JsonSerializer.Deserialize<Dictionary<string, object?>>(doc, readOptions);
+                    File.WriteAllText(file, JsonSerializer.Serialize(dictionary, writeOptions));
+                    if (settings.Convert)
+                        ConvertFile(file, overwrite: true);
                 }
             });
 
         return 0;
     }
 
-    async Task<long> GetJsonTimestampAsync(string file)
+    static void ConvertFile(string file, bool overwrite) => DictionaryConverter.ConvertFile(file, overwrite);
+
+    static async Task<long> GetJsonTimestampAsync(string file)
     {
         var jq = await Cli.Wrap(JQ.Path)
             .WithArguments([".document.metadata.timestamp", file, "-r"])

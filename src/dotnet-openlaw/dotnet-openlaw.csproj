@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <CommandHelp Include="saij download" />
+    <CommandHelp Include="convert" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,7 +36,7 @@
   <Target Name="RenderHelp" AfterTargets="Build" Condition="$(DesignTimeBuild) != 'true' and '$(OS)' == 'Windows_NT'">
     <PropertyGroup>
       <Cli>$(TargetDir)$(TargetName).exe</Cli>
-      <HelpCommand>"$(Cli)" --help --no-updates</HelpCommand>
+      <HelpCommand>"$(Cli)" --help --unattended</HelpCommand>
     </PropertyGroup>
 
     <WriteLinesToFile Lines="```shell" Overwrite="true" Encoding="UTF-8" File="help.md" />
@@ -54,7 +55,7 @@
     <PropertyGroup>
       <CommandHelp>%(CommandHelp.Identity)</CommandHelp>
       <Cli>$(TargetDir)$(TargetName).exe</Cli>
-      <HelpCommand>"$(Cli)" $(CommandHelp) --help --no-updates</HelpCommand>
+      <HelpCommand>"$(Cli)" $(CommandHelp) --help --unattended</HelpCommand>
       <HelpFile>$(CommandHelp.Replace(' ', '-')).md</HelpFile>
     </PropertyGroup>
 

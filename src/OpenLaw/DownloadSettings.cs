@@ -10,7 +10,17 @@ public class DownloadSettings : CommandSettings
     [CommandOption("--all")]
     public bool All { get; set; } = false;
 
-    [Description("Ubicación opcional para descarga de archivos.")]
+    [Description("Forzar formato en documentos existentes.")]
+    [DefaultValue(false)]
+    [CommandOption("--ff", IsHidden = true)]
+    public bool ForceFormat { get; set; } = false;
+
+    [Description("Convertir automaticamente documentos nuevos descargados a YAML.")]
+    [DefaultValue(true)]
+    [CommandOption("--convert")]
+    public bool Convert { get; set; } = false;
+
+    [Description("Ubicación opcional para descarga de archivos. Por defecto '%AppData%\\clarius\\openlaw'")]
     [CommandOption("--dir")]
     public string Directory { get; set; } = Environment.ExpandEnvironmentVariables("%AppData%\\clarius\\openlaw");
 }

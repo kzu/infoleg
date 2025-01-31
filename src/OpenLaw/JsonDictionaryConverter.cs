@@ -64,7 +64,7 @@ public partial class JsonDictionaryConverter : JsonConverter<Dictionary<string, 
         }
     }
 
-    public override void Write(Utf8JsonWriter writer, Dictionary<string, object?> value, JsonSerializerOptions options) 
+    public override void Write(Utf8JsonWriter writer, Dictionary<string, object?> value, JsonSerializerOptions options)
         => throw new NotImplementedException();
 
     string? ProcessString(string? value)
@@ -72,7 +72,7 @@ public partial class JsonDictionaryConverter : JsonConverter<Dictionary<string, 
         if (value == null)
             return null;
 
-        var replaced = value.Replace("[[p]]", "\n").Replace("[[/p]]", "\n");
+        var replaced = value.Replace("\r\n", "\n").Replace("[[p]]", "\n").Replace("[[/p]]", "\n");
         var multiline = MultilineExpr().Replace(replaced, "\n\n");
         var clean = RemoveMarkup().Replace(multiline, string.Empty);
 

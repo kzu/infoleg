@@ -3,6 +3,7 @@ using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Http.Resilience;
 using Spectre.Console;
@@ -16,6 +17,15 @@ public static class App
     public static CommandApp Create(out IServiceProvider services)
     {
         var collection = new ServiceCollection();
+
+        var config = new ConfigurationBuilder()
+            .AddEnvironmentVariables()
+            .AddUserSecrets<TypeRegistrar>()
+            .AddDotNetConfig()
+            .Build();
+
+        collection.AddSingleton(config)
+            .AddSingleton<IConfiguration>(_ => config);
 
         collection.AddHttpClient()
             .ConfigureHttpClientDefaults(defaults => defaults.ConfigureHttpClient(http =>
@@ -58,11 +68,13 @@ public static class App
 
         app.Configure(config =>
         {
-            // configure commands
             config.AddBranch("saij", saij =>
             {
                 saij.AddCommand<DownloadCommand>("download");
             });
+
+            config.AddCommand<ConvertCommand>("convert");
+            config.AddCommand<FormatCommand>("format");
 
             if (Environment.GetEnvironmentVariables().Contains("NO_COLOR"))
                 config.Settings.HelpProviderStyles = null;
