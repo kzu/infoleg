@@ -10,6 +10,7 @@
     <PackageReference Include="SharpYaml" Version="2.1.1" />
     <PackageReference Include="xunit" Version="2.9.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="3.0.1" />
+    <PackageReference Include="ThisAssembly.Project" Version="2.0.10" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="@(None)" CopyToOutputDirectory="PreserveNewest" />
+    <ProjectProperty Include="MSBuildProjectDirectory" />
   </ItemGroup>
 
 </Project>
