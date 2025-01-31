@@ -11,11 +11,12 @@ namespace Clarius.OpenLaw;
 public partial class Misc
 {
     [Theory]
-    [InlineData(@"SaijSamples\123456789-0abc-defg-g23-85000scanyel.json")]
-    [InlineData(@"SaijSamples\123456789-0abc-defg-g81-87000tcanyel.json")]
-    [InlineData(@"SaijSamples\123456789-0abc-defg-g56-95000scanyel.json")]
+    [InlineData("SaijSamples/123456789-0abc-defg-g23-85000scanyel.json")]
+    [InlineData("SaijSamples/123456789-0abc-defg-g81-87000tcanyel.json")]
+    [InlineData("SaijSamples/123456789-0abc-defg-g56-95000scanyel.json")]
     public void ConvertJsonToYaml(string jsonFile)
     {
+        jsonFile = Path.Combine(ThisAssembly.Project.MSBuildProjectDirectory, jsonFile);
         var json = File.ReadAllText(jsonFile).ReplaceLineEndings();
 
         var dictionary = DictionaryConverter.Parse(json);
@@ -25,14 +26,15 @@ public partial class Misc
 
         // Save the YAML to a file
         var yamlFile = Path.ChangeExtension(jsonFile, ".yaml");
-        File.WriteAllText($@"..\..\..\{yamlFile}", yaml);
+        File.WriteAllText(yamlFile, yaml);
     }
 
     [Theory]
-    [InlineData(@"SaijSamples\123456789-0abc-defg-g23-85000scanyel.json")]
-    [InlineData(@"SaijSamples\123456789-0abc-defg-g56-95000scanyel.json")]
+    [InlineData("SaijSamples/123456789-0abc-defg-g23-85000scanyel.json")]
+    [InlineData("SaijSamples/123456789-0abc-defg-g56-95000scanyel.json")]
     public void ConvertJsonToMarkdown(string jsonFile)
     {
+        jsonFile = Path.Combine(ThisAssembly.Project.MSBuildProjectDirectory, jsonFile);
         var json = File.ReadAllText(jsonFile).ReplaceLineEndings();
 
         var dictionary = DictionaryConverter.Parse(json);
@@ -42,6 +44,6 @@ public partial class Misc
 
         // Save the Markdown to a file
         var markdownFile = Path.ChangeExtension(jsonFile, ".md");
-        File.WriteAllText($@"..\..\..\{markdownFile}", markdown);
+        File.WriteAllText(markdownFile, markdown);
     }
 }
