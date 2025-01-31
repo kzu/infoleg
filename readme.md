@@ -20,26 +20,65 @@ OPTIONS:
     -h, --help    Prints help information
 
 COMMANDS:
-    saij     
+    saij                                                
+    convert    Convierte archivos JSON a YAML y Markdown
+    format     Normaliza el formato de archivos JSON    
 ```
 
 <!-- src/dotnet-openlaw/help.md -->
 
 <!-- include src/dotnet-openlaw/saij-download.md -->
 ```shell
+DESCRIPTION:
+Descargar documentos del sistema SAIJ.
+
 USAGE:
     openlaw saij download [OPTIONS]
 
 OPTIONS:
-                  DEFAULT                                                       
-    -h, --help               Prints help information                            
-        --all     True       Descargar todos los documentos, no solamente Leyes 
-                             de alcance Nacional                                
-        --dir                Ubicación opcional para descarga de archivos       
+                     DEFAULT                                                    
+    -h, --help                  Prints help information                         
+        --all        True       Descargar todos los documentos, no solamente    
+                                Leyes de alcance Nacional                       
+        --convert    True       Convertir automaticamente documentos nuevos     
+                                descargados a YAML                              
+        --dir                   Ubicación opcional para descarga de archivos.   
+                                Por defecto '%AppData%\clarius\openlaw'         
 ```
 
 <!-- src/dotnet-openlaw/saij-download.md -->
 
 <!-- include src/dotnet-openlaw/convert.md -->
+```shell
+DESCRIPTION:
+Convierte archivos JSON a YAML y Markdown.
+
+USAGE:
+    openlaw convert [file] [OPTIONS]
+
+ARGUMENTS:
+    [file]    Archivo a convertir. Opcional
+
+OPTIONS:
+    -h, --help    Prints help information                                       
+        --dir     Ubicación de archivos a convertir. Por defecto                
+                  '%AppData%\clarius\openlaw'                                   
+```
+
+<!-- src/dotnet-openlaw/convert.md -->
 
 <!-- include src/dotnet-openlaw/format.md -->
+```shell
+DESCRIPTION:
+Normaliza el formato de archivos JSON.
+
+USAGE:
+    openlaw format [OPTIONS]
+
+OPTIONS:
+    -h, --help    Prints help information                                       
+        --dir     Ubicación de archivos a formatear. Por defecto                
+                  '%AppData%\clarius\openlaw'                                   
+```
+
+<!-- src/dotnet-openlaw/format.md -->
