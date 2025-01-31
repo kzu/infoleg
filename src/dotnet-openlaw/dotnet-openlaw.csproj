@@ -27,6 +27,7 @@
   <ItemGroup>
     <CommandHelp Include="saij download" />
     <CommandHelp Include="convert" />
+    <CommandHelp Include="format" />
   </ItemGroup>
 
   <ItemGroup>

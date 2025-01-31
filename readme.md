@@ -39,3 +39,7 @@ OPTIONS:
 ```
 
 <!-- src/dotnet-openlaw/saij-download.md -->
+
+<!-- include src/dotnet-openlaw/convert.md -->
+
+<!-- include src/dotnet-openlaw/format.md -->
