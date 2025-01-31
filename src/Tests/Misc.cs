@@ -10,11 +10,6 @@ namespace Clarius.OpenLaw;
 
 public partial class Misc
 {
-    static readonly JsonSerializerOptions options = new JsonSerializerOptions
-    {
-        Converters = { new JsonDictionaryConverter() },
-    };
-
     [Theory]
     [InlineData(@"SaijSamples\123456789-0abc-defg-g23-85000scanyel.json")]
     [InlineData(@"SaijSamples\123456789-0abc-defg-g81-87000tcanyel.json")]
