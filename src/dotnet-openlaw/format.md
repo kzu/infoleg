@@ -7,6 +7,6 @@ USAGE:
 
 OPTIONS:
     -h, --help    Prints help information                                       
-        --dir     Ubicación opcional para descarga de archivos. Por defecto     
+        --dir     Ubicación de archivos a formatear. Por defecto                
                   '%AppData%\clarius\openlaw'                                   
 ```

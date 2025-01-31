@@ -22,7 +22,7 @@ public class FormatCommand(IAnsiConsole console) : Command<FormatCommand.FormatS
 
     public class FormatSettings : CommandSettings
     {
-        [Description("Ubicación opcional para descarga de archivos. Por defecto '%AppData%\\clarius\\openlaw'")]
+        [Description("Ubicación de archivos a formatear. Por defecto '%AppData%\\clarius\\openlaw'")]
         [CommandOption("--dir")]
         public string Directory { get; set; } = Environment.ExpandEnvironmentVariables("%AppData%\\clarius\\openlaw");
     }
